@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+{% block 'title'%}
+HomePage
+{%endblock%}
+{% block 'css'%}
+<style type="text/css">
+    body{
+        background-color: white;
+    }
+</style>
+{%endblock%}
+{% block 'bodyTitle'%}
+Home Page
+{%endblock%}
+{% block 'content'%}
+<div class="container">
+    <button><a href="create/produit">Creer produit</a></button>
+    <button><a href="create/magasin">Creer magasin</a></button>
+    <button><a href="create/profile-magasin">Creer profil magasin</a></button>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Age</th>
+            <th>Country</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    {% for person in persons%}
+        <tr>
+            <td>{{person.name}}</td>
+            <td>{{person.age}}</td>
+            <td>{{person.sex}}</td>
+            <td>{{person.country}}</td>
+            <td>{{person.isMajor}}</td>
+            <td><a href="{{ person.get_update_url }}">Update</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+        <hr>
+        <legend>Liste des personnes ayant plus de 20 ans</legend>
+        <table class="table ">
+            <tr>
+                <th>Name</th>
+                <th>Sex</th>
+                <th>Age</th>
+                <th>Country</th>
+                <th>Status</th>
+            </tr>
+        {% for person in personsM%}
+            <tr>
+                <td>{{person.name}}</td>
+                <td>{{person.age}}</td>
+                <td>{{person.sex}}</td>
+                <td>{{person.country}}</td>
+                <td>{{person.isMajor}}</td>
+            </tr>
+        {%endfor%}
+        </table>
+        <hr>
+        <legend>Liste des personnes ayant la lettre 'a' et plus de 20 ans</legend>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Sex</th>
+                <th>Age</th>
+                <th>Country</th>
+                <th>Status</th>
+            </tr>
+        {% for person in personsA%}
+            <tr>
+                <td>{{person.name}}</td>
+                <td>{{person.age}}</td>
+                <td>{{person.sex}}</td>
+                <td>{{person.country}}</td>
+                <td>{{person.isMajor}}</td>
+            </tr>
+        {%endfor%}
+        </table>
+        
+</div>
+{%endblock%}
+{% block 'js'%}
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        alert("Page chargee")
+    })
+</script>
+{%endblock%}
